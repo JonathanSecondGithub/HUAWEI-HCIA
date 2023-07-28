@@ -4,5 +4,5 @@
 ## Objectives
 
     >Complete basic configurations, such as device name and router interface IP address.
-    >Save the configurations.
+     Save the configurations.
     >Restart the device.
