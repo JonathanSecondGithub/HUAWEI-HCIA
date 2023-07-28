@@ -17,11 +17,12 @@ Double clicking on the router will open a terminal like shown below
 ![alt text](http://url/to/img.png)
 
 The following are the basic commands: 
--The ==system-view== command enables you to enter the system view from the user view.
+- The ==system-view== command enables you to enter the system view from the user view.
+- ==very important words==
 
--The **sysname** command sets the device host name.
+- The **sysname** command sets the device host name.
 
--The **interface GigabitEthernet 0/0/1** command specifies the type and number of the interface from which the current interface is isolated unidirectionally for example in this case the interface type is *GigabitEthernet* and its number is *0/0/1*.
+- The **interface GigabitEthernet 0/0/1** command specifies the type and number of the interface from which the current interface is isolated unidirectionally for example in this case the interface type is *GigabitEthernet* and its number is *0/0/1*.
 
 - **?**
 - Enter a question mark (?) in any command view to obtain all the commands and their simple descriptions.
