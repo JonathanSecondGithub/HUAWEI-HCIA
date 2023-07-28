@@ -17,26 +17,26 @@ Double clicking on the router will open a terminal like shown below
 ![alt text](http://url/to/img.png)
 
 The following are the basic commands we will be lookinh at : 
-system-view
-sysname Datacom-Router
-interface GigabitEthernet 0/0/1
-i?
-ip ?
-dis this
-display current-configuration
-quit
-undo
-save
-dir
-save test.cfg
-startup saved-configuration test.cfg
-display startup
-reboot 
-display interface
-display clock
-display users
-display ip interface
-display version
-ip address 192.168.1.2 255.255.255.0
+> system-view
+> sysname Datacom-Router
+> interface GigabitEthernet 0/0/1
+> i?
+> ip ?
+> dis this
+> display current-configuration
+> quit
+> undo
+> save
+> dir
+> save test.cfg
+> startup saved-configuration test.cfg
+> display startup
+> reboot 
+> display interface
+> display clock
+> display users
+> display ip interface
+> display version
+> ip address 192.168.1.2 255.255.255.0
 
 
