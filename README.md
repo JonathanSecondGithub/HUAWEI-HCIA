@@ -1,12 +1,12 @@
 # HUAWEI-HCIA
 
-## VRP and Configuration Basics
+## 1. VRP and Configuration Basics
 ## Objectives
     1. Complete basic configurations, such as device name and router interface IP address.
     2. Save the configurations.
     3. Restart the device.
 
-# 1. Basic Configurations
+# Basic Configurations
 We will be using the following configuration to practice:
 
 ** Config Image
@@ -17,7 +17,7 @@ Double clicking on the router will open a terminal like shown below
 ![alt text](http://url/to/img.png)
 
 The following are the basic commands: 
--The **system-view** command enables you to enter the system view from the user view.
+-The ==system-view== command enables you to enter the system view from the user view.
 
 -The **sysname** command sets the device host name.
 
