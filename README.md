@@ -28,21 +28,23 @@ Enter a question mark (?) in any command view to obtain all the commands and the
 Enter some keywords of a command and a question mark (?) separated by a space. All keywords associated with this command, as well as simple descriptions, are displayed.
 an output of *<cr>* indicates that there is no keyword or parameter in this position. You can press Enter to run this command.
 
-- The `dis this`
--display current-configuration
--quit
--undo
--save
--dir
--save test.cfg
--startup saved-configuration test.cfg
--display startup
--reboot 
--display interface
--display clock
--display users
--display ip interface
--display version
--ip address 192.168.1.2 255.255.255.0
+- The `display this` command displays the running configuration in the current view.
+- The `display current-configuration` displays the currently running configuration.
+This command does not display parameters that use default settings.
+- quit
+- undo
+- save
+- dir
+- save test.cfg
+- startup saved-configuration test.cfg
+- display startup
+- reboot 
+- display interface
+- display clock
+- display users
+- display ip interface
+- display version
+- ip address 192.168.1.2 255.255.255.0
+- include
 
 
