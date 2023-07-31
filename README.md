@@ -120,12 +120,43 @@ Advertisement
     The default-route-advertise command advertises the default route to a common OSPF area.
     If the always argument is not specified, the default route is advertised to other routers only when there are active non-OSPF default routes in the routing table of the local router.
 
-    
-    
-    
+    display ip routing-table 
+
+    To verify results
+    tracert –a 10.0.1.1 10.0.1.2
     
 ## 8. ipv6
 ## 9. Inter-Vlan
+Complete basic device configuration.
+
+    - Name the devices 
+        Enter Syatem view and use sysname command
+    - Configure IP addresses and gateways for routers
+        Select the interface : interface GigabitEthernet 0/0/1
+        Assign an IP address to the interface : ip address 192.168.1.1 255.255.255.0
+        quit to leave the interface
+        Configure the default gateway : ip route-static 0.0.0.0 0 192.168.1.254
+    - Assign routers to VLANS
+        port link-type access
+        port default vlan 10
+        quit
+Configure Dot1q
+
+    - Configure a trunk port on the switch.
+    - Configure a dot1q termination sub-interface on R1.
+    
+    The dot1q termination vid vlan-id command configures the VLAN ID for Dot1q termination on a sub-interface.
+
+    To allow such sub-interfaces to forward broadcast packets, the ARP broadcast function must be enabled using the arp broadcast enable command.
+Configure VLANIF interfaces to enable inter-VLAN communication.
+
+    The interface vlanif vlan-id command creates a VLANIF interface and displays the VLANIF interface view. You must create a VLAN before configuring a VLANIF interface.
+    Test the connectivity between VLANs with ping
+    
+
+    
+    
+
 ## 10. WLAN
 ## 11. ACL
 ## 12. AAA
