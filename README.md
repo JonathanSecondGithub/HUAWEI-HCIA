@@ -95,7 +95,6 @@ Configure edge ports.
 ## 7. OSPF
 Complete basic device configuration.
 ie:
--
     Create an OSPF process using ospf command
      
     The area command creates an OSPF area and displays the OSPF area view.
@@ -201,16 +200,56 @@ Test the Telnet access and verify the ACL configuration.
     telnet -a 10.1.1.1 10.1.3.1
     The telnet command enables a user to use the Telnet protocol to log in to another device.
     -a source-ip-address: specifies the source IP address. Users can communicate with the server from the specified IP address.
+    
 ## 12. AAA
+We will be using 2 routers in this configuration:
+
+    Name the routers R1 and R2.
+    Configure IP addresses for R1 and R2.
+    Commands:
+        interface GigabitEthernet 0/0/3
+        ip address 10.0.12.1 24
+Configure authentication and authorization schemes.
+
+    Enter the AAA view.
+        aaa
+    Create an authentication scheme named datacom.
+        authentication-scheme datacom
+    Set the authentication mode to local authentication.
+        authentication-mode local
+Create a domain and apply the AAA scheme to the domain.
+
+    Create a domain named datacom.
+Configure local users.
+
+    Create a local user and password.
+        local-user hcia@datacom password cipher HCIA-Datacom
+Configure the parameters for the local user, such as access type and privilege level.
+
+    The local-user service-type command configures the access type for a local user.
+    
+     Huawei devices support 16 levels of user privilege, numbered from 0 to 15. Level 0 represents the visit level, level 1 to 14 represent the user level, and level 15 represents the management level.
+     
+         local-user <username> privilege level <level_number>
+         save
+Enable the telnet function on R2.
+
+    user-interface vty 0 4 
+
+    The authentication-mode command configures an authentication mode for accessing the user interface.
+
+Verify the configuration.
+
+    Telnet R2 from R1
+        telnet 10.0.12.2
+    
+    
 ## 13. NAT
 ## 14. Network Services and Applications
 ## 15. WAN
 ## 16. Network Management and OM
 ## 17. Campus Network
-## Objectives
-    1. Complete basic configurations, such as device name and router interface IP address.
-    2. Save the configurations.
-    3. Restart the device.
+
 
 
 
