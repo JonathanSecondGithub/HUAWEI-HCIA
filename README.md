@@ -159,6 +159,48 @@ Configure VLANIF interfaces to enable inter-VLAN communication.
 
 ## 10. WLAN
 ## 11. ACL
+We will be using 3 routers for this practical:
+
+    Configure IP addresses for the 3 routers R1, R2, and R3.
+    Configure OSPF on R1, R2, and R3 and assign them to area 0 to enable connectivity.
+    Run the ping command on R3 to test network connectivity.
+Configuration R3 as a server.
+
+    The telnet server enable command enables the Telnet service.
+    The user-interface command displays one or multiple user interface views.The Virtual Type Terminal (VTY) user interface manages and monitors users logging in using Telnet or SSH.
+    
+    [R3-ui-vty0-4]user privilege level 3
+    [R3-ui-vty0-4] set authentication password cipher 
+
+Configure an ACL to match desired traffic.
+Method 1: Configure an ACL on the VTY interface of R3 to allow R1 to log in to R3 through Telnet using the IP address of loopback 1.
+
+    - Configure an ACL on R3.
+    An example of how to configure acl on a router
+        system-view
+        acl number 3000
+        rule 5 deny icmp
+        rule 10 permit ip
+        interface GigabitEthernet0/0/1
+        traffic-filter inbound acl 2000
+        save
+        display acl 3000
+        
+    - Filter traffic on the VTY interface of R3.
+    - Display the ACL configuration on R3.
+    The display acl command displays the ACL configuration.
+
+Method 2: Configure an ACL on the physical interface of R2 to allow R1 to log in to R3 through Telnet from the IP address of the physical interface.
+
+    - Configure an ACL on R2
+    - Filter traffic on GE0/0/3 of R3.
+    - Display the ACL configuration on R2.
+    display acl 3001
+Test the Telnet access and verify the ACL configuration.
+
+    telnet -a 10.1.1.1 10.1.3.1
+    The telnet command enables a user to use the Telnet protocol to log in to another device.
+    -a source-ip-address: specifies the source IP address. Users can communicate with the server from the specified IP address.
 ## 12. AAA
 ## 13. NAT
 ## 14. Network Services and Applications
