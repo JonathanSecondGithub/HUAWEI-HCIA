@@ -1,6 +1,22 @@
 # HUAWEI-HCIA
 
 ## 1. VRP and Configuration Basics
+## 2. Ethernet Switching Basics
+## 3. VLAN
+## 4. STP
+## 5. Eth-Trunk iStack and CSS
+## 6. IP Routing
+## 7. OSPF
+## 8. ipv6
+## 9. Inter-Vlan
+## 10. WLAN
+## 11. ACL
+## 12. AAA
+## 13. NAT
+## 14. Network Services and Applications
+## 15. WAN
+## 16. Network Management and OM
+## 17. Campus Network
 ## Objectives
     1. Complete basic configurations, such as device name and router interface IP address.
     2. Save the configurations.
