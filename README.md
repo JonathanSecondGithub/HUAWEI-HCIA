@@ -45,26 +45,85 @@ This command does not display parameters that use default settings.
 ## 3. VLAN
 
 ### a. Create VLANs 2 and 3 on S1 and S2.
-    The `vlan vlan-id` command creates a VLAN and displays the VLAN view. If the VLAN to be created exists, the VLAN view is displayed directly.
+    The vlan vlan-id command creates a VLAN and displays the VLAN view. If the VLAN to be created exists, the VLAN view is displayed directly.
     
-    The `vlan batch { vlan-id1 [ to vlan-id2 ] }` command creates VLANs in batches.`
+    The vlan batch { vlan-id1 [ to vlan-id2 ] } command creates VLANs in batches.`
     
-    The `port link-type { access | hybrid | trunk }` command specifies the link type of an interface, which can be access, trunk, or hybrid.
+    The port link-type { access | hybrid | trunk } command specifies the link type of an interface, which can be access, trunk, or hybrid.
     
-    The `port default vlan vlan-id` command configures the default VLAN of an interface and assigns the interface to the VLAN.
+    The port default vlan vlan-id command configures the default VLAN of an interface and assigns the interface to the VLAN.
     
-    The `port trunk allow-pass vlan` command assigns a trunk port to the specified VLANs.
+    The port trunk allow-pass vlan command assigns a trunk port to the specified VLANs.
     
-    The `undo port trunk allow-pass vlan` command deletes a trunk port from the specified VLANs.
+    The undo port trunk allow-pass vlan command deletes a trunk port from the specified VLANs.
 
 ### b. Configure MAC address-based VLANs.
-    The ==mac-vlan mac-address== command associates a MAC address with a VLAN.
+    The mac-vlan mac-address command associates a MAC address with a VLAN.
+    
+    The port hybrid untagged vlan command assigns a hybrid port to the specified VLANs to allow untagged frames to pass through.
 
+    To enable a port to forward packets based on associations between MAC addresses and VLANs, you must run the mac-vlan enable command.
+
+    The display vlan command displays information about VLANs.
+
+    The display vlan verbose command displays detailed information about a specified VLAN
+
+    The display mac-vlan command displays the configuration of MAC address-based VLAN assignment.
 
 ## 4. STP
+    The stp enable command enables STP, RSTP, or MSTP on a switching device or a port. By default, STP, RSTP, or MSTP is enabled on switches.
+
+    The stp mode{mstp | rstp | stp} command sets the operation mode of the spanning tree protocol on a switching device.
+
+    The display stp command displays the status of and statistics on a spanning tree instance.
+
+    The display stp brief command displays the brief status.
+
+    The stp root primary command specifies a switch as the root switching device.
+
+    The stp root secondary command specifies a switch as the secondary root bridge.
+
+    display stp 
+    display stp brief 
+
+Configure edge ports.
+
+    The stp edged-port enable command sets the current port as an edge port.
+
 ## 5. Eth-Trunk iStack and CSS
 ## 6. IP Routing
 ## 7. OSPF
+Complete basic device configuration.
+ie:
+-
+    Create an OSPF process using ospf command
+     
+    The area command creates an OSPF area and displays the OSPF area view.
+
+    The network network-address wildcard-mask command specifies the interfaces on which OSPF is to be enabled.
+
+    The display ospf peer  command displays the OSPF neighbor information
+
+    Display ip routing-table protocol ospf displays the routes learned from OSPF.
+
+Configure OSPF authentication.
+Commands on the Router:
+
+    interface GigabitEthernet0/0/1
+    ospf authentication-mode md5 1 cipher HCIA-Datacom
+    interface GigabitEthernet0/0/3
+    ospf authentication-mode md5 1 cipher HCIA-Datacom
+    display this 
+
+Advertisement
+
+    The default-route-advertise command advertises the default route to a common OSPF area.
+    If the always argument is not specified, the default route is advertised to other routers only when there are active non-OSPF default routes in the routing table of the local router.
+
+    
+    
+    
+    
 ## 8. ipv6
 ## 9. Inter-Vlan
 ## 10. WLAN
