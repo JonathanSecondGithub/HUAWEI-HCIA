@@ -44,19 +44,22 @@ This command does not display parameters that use default settings.
 ## 2. Ethernet Switching Basics
 ## 3. VLAN
 
-### Create VLANs 2 and 3 on S1 and S2.
-The `vlan vlan-id` command creates a VLAN and displays the VLAN view. If the VLAN to be created exists, the VLAN view is displayed directly.
-The `vlan batch { vlan-id1 [ to vlan-id2 ] }` command creates VLANs in batches.`
+### a. Create VLANs 2 and 3 on S1 and S2.
+    The `vlan vlan-id` command creates a VLAN and displays the VLAN view. If the VLAN to be created exists, the VLAN view is displayed directly.
+    
+    The `vlan batch { vlan-id1 [ to vlan-id2 ] }` command creates VLANs in batches.`
+    
+    The `port link-type { access | hybrid | trunk }` command specifies the link type of an interface, which can be access, trunk, or hybrid.
+    
+    The `port default vlan vlan-id` command configures the default VLAN of an interface and assigns the interface to the VLAN.
+    
+    The `port trunk allow-pass vlan` command assigns a trunk port to the specified VLANs.
+    
+    The `undo port trunk allow-pass vlan` command deletes a trunk port from the specified VLANs.
 
-The `port link-type { access | hybrid | trunk }` command specifies the link type of an interface, which can be access, trunk, or hybrid.
+### b. Configure MAC address-based VLANs.
+    The **mac-vlan mac-address** command associates a MAC address with a VLAN.
 
-The `port default vlan vlan-id` command configures the default VLAN of an interface and assigns the interface to the VLAN.
-
-The `port trunk allow-pass vlan` command assigns a trunk port to the specified VLANs.
-
-The `undo port trunk allow-pass vlan` command deletes a trunk port from the specified VLANs.
-
-### Configure MAC address-based VLANs.
 
 ## 4. STP
 ## 5. Eth-Trunk iStack and CSS
