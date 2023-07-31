@@ -58,7 +58,7 @@ This command does not display parameters that use default settings.
     The `undo port trunk allow-pass vlan` command deletes a trunk port from the specified VLANs.
 
 ### b. Configure MAC address-based VLANs.
-    The **mac-vlan mac-address** command associates a MAC address with a VLAN.
+    The ==mac-vlan mac-address== command associates a MAC address with a VLAN.
 
 
 ## 4. STP
