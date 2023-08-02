@@ -157,6 +157,111 @@ Configure VLANIF interfaces to enable inter-VLAN communication.
     
 
 ## 10. WLAN
+
+    Name the devices
+
+    Switch 3
+    interface GigabitEthernet 0/0/4
+
+    The poe enable command enables the PoE function on a port.
+
+    Switch 4
+    interface GigabitEthernet 0/0/4
+
+    Configure VLANs.
+
+    Configure interface IP addresses.
+
+    Configure DHCP.
+        system-view
+        dhcp enable
+        ip pool <pool_name> - Configure a DHCP IP pool:
+        network <ip_address> mask <subnet_mask> - Configure the IP address range for the DHCP IP pool
+        gateway-list <ip_address> - Configure the default gateway for the DHCP IP pool (optional)
+        dns-list <primary_dns> <secondary_dns> - Configure the DNS server for the DHCP IP pool (optional)
+        lease day <days> hour <hours> minute <minutes> - set a lease time (optional)
+        
+        Apply this DHCP IP pool to an interface
+            interface Vlanif100
+            dhcp select global
+        save
+
+    Create an AP group and name it ap-group1.
+        system-view
+        wlan
+        ap-group name ap-group1 - Create the AP group
+        description <description_text> - optional
+        ap id <ap_id> type <ap_type> - add APs to the AP group
+        save
+
+    Create a regulatory domain profile, and set the AC country code in the profile.
+        system-view
+        wlan
+        regulatory-domain-profile name <profile_name>
+        country-code <country_code>
+    A regulatory domain profile provides configurations of country code, calibration channel, and calibration bandwidth for an AP.
+    The default regulatory domain profile is named default. Therefore, the default profile is displayed.
+    A country code identifies the country in which the APs are deployed.
+
+    Bind the regulatory domain profile to an AP group.
+        ap-group name <ap_group_name>
+        regulatory-domain-profile <profile_name>
+        save
+
+    The regulatory-domain-profile command in the AP group view binds a regulatory domain profile to an AP or AP group.
+
+    Specify a source interface on the AC for establishing CAPWAP tunnels.
+    The capwap source interface command configures the interface used by the AC to set up CAPWAP tunnels with APs.
+    Import APs to the AC and add the APs to AP group ap-group1.
+
+    APs can be added to an AC in the following ways:
+    • Manual configuration: Specify the MAC addresses and serial numbers (SNs) of APs on the AC in advance. When APs are connected the AC, the AC finds that their MAC addresses and SNs match the preconfigured ones and establish connections with them.
+    • Automatic discovery: When the AP authentication mode is set to no authentication, or the AP authentication mode is set to MAC or SN authentication and the MAC addresses or SNs are whitelisted, the AC automatically discovers connected APs and establish connections with them.
+    • Manual confirmation: If the AP authentication mode is set to MAC or SN authentication and MAC address or SN of a connected AP is not included in the whitelist on the AC, the AC adds the AP to the list of unauthorized APs. You can manually confirm the identify of such an AP to bring it online.
+
+    The ap auth-mode command configures the AP authentication mode.
+    The ap-id command adds an AP or displays the AP view.
+    The ap-mac argument specifies MAC address authentication, and the ap-sn argument specifies SN authentication.
+    The ap-name command configures the name of an AP.
+    The ap-group command configures the group for an AP.
+
+    Display the information about the current AP.
+    display ap all
+
+    The display ap command displays AP information, including the IP address, model (AirEngine5760), status (normal), and online duration of the AP.
+    In addition, you can add by-state state or by-ssid ssid to filter APs in a specified state or using a specified SSID.
+
+    Configure WLAN service parameters.
+    
+        Create security profile HCIA-WLAN and configure a security policy.
+            system-view
+            wlan
+            security-profile name <profile_name>
+            wpa-psk pass-phrase <password> // Replace <password> with your desired passphrase
+            security-policy wpa2-psk
+            vap-profile name <vap_profile_name>
+            security-profile <profile_name>
+            save
+            
+        The security psk command configures WPA/WPA2 pre-shared key (PSK) authentication and encryption.
+        Currently, both WPA and WPA2 are used. User terminals can be authenticated using either WPA or WPA2. The PSK is set to HCIA-Datacom. User data is encrypted using the AES encryption algorithm.
+        [AC]
+        # Create SSID profile HCIA-WLAN and set the SSID name to HCIA-WLAN.
+        [AC]
+        # Create VAP profile HCIA-WLAN, configure the data forwarding mode and service VLAN, and apply the security profile and SSID profile to the VAP profile. 
+        [AC]
+        The vap-profile command creates a VAP profile.
+        You can configure the data forwarding mode in a VAP profile and bind the SSID profile, security profile, and traffic profile to the VAP profile.
+        [AC] 
+        The forward-mode command configures the data forwarding mode in a VAP profile. By default, the data forwarding mode is direct forwarding.
+        [AC]
+        The service-vlan command configures the service VLAN of a VAP. After a STA accesses a WLAN, the user data forwarded by the AP carries the service-VLAN tag.
+        [AC]
+        # Bind the VAP profile to the AP group and apply configurations in VAP profile HCIA-WLAN to radio 0 and radio 1 of the APs in the AP group.
+        [AC]
+        The vap-profile command binds a VAP profile to a radio. After this command is executed, all configurations in the VAP, including the configurations in the profiles bound to the VAP, are delivered to the radios of APs.
+    
+    
 ## 11. ACL
 We will be using 3 routers for this practical:
 
