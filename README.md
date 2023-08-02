@@ -245,6 +245,87 @@ Verify the configuration.
     
     
 ## 13. NAT
+
+    Configure IP addresses and routes.
+
+    Router 1
+    interface GigabitEthernet 0/0/3
+    ip address 192.168.1.1 24
+    quit
+    ip route-static 0.0.0.0 0 192.168.1.254
+
+    Router 2
+    interface GigabitEthernet 0/0/3
+    ip address 192.168.1.254 24
+    quit
+    
+    interface GigabitEthernet 0/0/4
+    ip address 1.2.3.4 24
+    quit
+    ip route-static 0.0.0.0 0 1.2.3.254
+
+    Router 3
+    interface GigabitEthernet 0/0/3
+    ip address 1.2.3.254 24
+
+    Configure the Telnet function on R1 and R3 for subsequent verification.
+    Router 1
+        user-interface vty 0 4
+        authentication-mode aaa 
+        quit
+        aaa
+        local-user test password irreversible-cipher Huawei@123 
+    
+    Add a new user.
+        local-user test service-type telnet 
+        local-user test privilege level 15
+
+    Router 3
+        user-interface vty 0 4
+        authentication-mode aaa 
+        quit
+        aaa
+        local-user test password irreversible-cipher Huawei@123
+
+    Add a new user.
+        local-user test service-type telnet 
+        local-user test privilege level 15
+        quit
+
+    Test connectivity.
+    ping 1.2.3.254
+    ping 1.2.3.254
+
+    Configure a NAT address pool.
+    The nat address-group command configures a NAT address pool.
+
+    Configure an ACL.
+    acl 2000 
+    rule 5 permit source any
+
+    Configure dynamic NAT on GigabitEthernet0/0/4 of R2.
+    interface GigabitEthernet 0/0/4
+    The nat outbound command associates an ACL with an NAT address pool.
+    If the address pool has sufficient addresses, you can add the no-pat argument to enable one-to-one address translation.
+
+    Test connectivity.
+    ping
+    telnet
+    display nat session all
+
+    If the IP address of GigabitEthernet0/0/4 on R2 is dynamically assigned (e.g. through DHCP or PPPoE dialup), you need to configure Easy IP.
+        Router 2
+        interface GigabitEthernet 0/0/4
+        
+        Configure Easy IP.
+        Test connectivity.
+        Telnet R3 from R1 to simulate TCP traffic.
+
+    R3 needs to provide network services (telnet in this example) for users on the public network. Because R3 does not have a public IP address, you need to configure NAT server on the outbound interface of R2.
+        Configure NAT server on R2.
+        interface GigabitEthernet 0/0/4
+        The nat server command defines a mapping table of internal servers so that external users can access internal servers through address and port translation.
+    
 ## 14. Network Services and Applications
 ## 15. WAN
 ## 16. Network Management and OM
