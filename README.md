@@ -1,6 +1,7 @@
 # HUAWEI-HCIA
 
-## 1. VRP and Configuration Basics
+<details>
+    ## 1. VRP and Configuration Basics
 # Basic Configurations
 We will be using the following configuration to practice:
 
@@ -41,6 +42,8 @@ This command does not display parameters that use default settings.
 - display version
 - ip address 192.168.1.2 255.255.255.0
 - include
+</details>
+
 ## 2. Ethernet Switching Basics
 ## 3. VLAN
 
