@@ -1,7 +1,7 @@
 # HUAWEI-HCIA
 
 <details>
-    ## 1. VRP and Configuration Basics
+<summary>1. VRP and Configuration Basics</summary>
 # Basic Configurations
 We will be using the following configuration to practice:
 
