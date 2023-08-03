@@ -44,9 +44,9 @@ This command does not display parameters that use default settings.
 - include
 </details>
 
-## 2. Ethernet Switching Basics
-## 3. VLAN
+<details><summary>2. Ethernet Switching Basics</summary></details>
 
+<details><summary>3. VLAN</summary>
 ### a. Create VLANs 2 and 3 on S1 and S2.
     The vlan vlan-id command creates a VLAN and displays the VLAN view. If the VLAN to be created exists, the VLAN view is displayed directly.
     
@@ -72,9 +72,9 @@ This command does not display parameters that use default settings.
     The display vlan verbose command displays detailed information about a specified VLAN
 
     The display mac-vlan command displays the configuration of MAC address-based VLAN assignment.
-
-## 4. STP
-    The stp enable command enables STP, RSTP, or MSTP on a switching device or a port. By default, STP, RSTP, or MSTP is enabled on switches.
+</details>
+<details><summary>4. STP</summary>
+The stp enable command enables STP, RSTP, or MSTP on a switching device or a port. By default, STP, RSTP, or MSTP is enabled on switches.
 
     The stp mode{mstp | rstp | stp} command sets the operation mode of the spanning tree protocol on a switching device.
 
@@ -92,10 +92,13 @@ This command does not display parameters that use default settings.
 Configure edge ports.
 
     The stp edged-port enable command sets the current port as an edge port.
+</details>
 
-## 5. Eth-Trunk iStack and CSS
-## 6. IP Routing
-## 7. OSPF
+<details><summary>5. Eth-Trunk iStack and CSS</summary></details>
+
+<details><summary>6. IP Routing</summary></details>
+
+<details><summary>7. OSPF</summary>
 Complete basic device configuration.
 ie:
     Create an OSPF process using ospf command
@@ -126,9 +129,11 @@ Advertisement
 
     To verify results
     tracert –a 10.0.1.1 10.0.1.2
-    
-## 8. ipv6
-## 9. Inter-Vlan
+</details>
+
+<details><summary>8. ipv6</summary></details>
+
+<details><summary>9. Inter-Vlan</summary>
 Complete basic device configuration.
 
     - Name the devices 
@@ -154,14 +159,9 @@ Configure VLANIF interfaces to enable inter-VLAN communication.
 
     The interface vlanif vlan-id command creates a VLANIF interface and displays the VLANIF interface view. You must create a VLAN before configuring a VLANIF interface.
     Test the connectivity between VLANs with ping
-    
-
-    
-    
-
-## 10. WLAN
-
-    Name the devices
+</details>
+<details><summary>10. WLAN</summary>
+Name the devices
 
     Switch 3
     interface GigabitEthernet 0/0/4
@@ -263,9 +263,9 @@ Configure VLANIF interfaces to enable inter-VLAN communication.
         # Bind the VAP profile to the AP group and apply configurations in VAP profile HCIA-WLAN to radio 0 and radio 1 of the APs in the AP group.
         [AC]
         The vap-profile command binds a VAP profile to a radio. After this command is executed, all configurations in the VAP, including the configurations in the profiles bound to the VAP, are delivered to the radios of APs.
-    
-    
-## 11. ACL
+</details>
+
+<details><summary>11. ACL</summary>
 We will be using 3 routers for this practical:
 
     Configure IP addresses for the 3 routers R1, R2, and R3.
@@ -307,9 +307,10 @@ Test the Telnet access and verify the ACL configuration.
 
     telnet -a 10.1.1.1 10.1.3.1
     The telnet command enables a user to use the Telnet protocol to log in to another device.
-    -a source-ip-address: specifies the source IP address. Users can communicate with the server from the specified IP address.
-    
-## 12. AAA
+    -a source-ip-address: specifies the source IP address. Users can communicate with the server from the specified IP address
+</details>
+
+<details><summary>12. AAA</summary>
 We will be using 2 routers in this configuration:
 
     Name the routers R1 and R2.
@@ -350,11 +351,10 @@ Verify the configuration.
 
     Telnet R2 from R1
         telnet 10.0.12.2
-    
-    
-## 13. NAT
+</details>
 
-    Configure IP addresses and routes.
+<details><summary>13. NAT</summary>
+Configure IP addresses and routes.
 
     Router 1
     interface GigabitEthernet 0/0/3
@@ -433,13 +433,9 @@ Verify the configuration.
         Configure NAT server on R2.
         interface GigabitEthernet 0/0/4
         The nat server command defines a mapping table of internal servers so that external users can access internal servers through address and port translation.
-    
-## 14. Network Services and Applications
-## 15. WAN
-## 16. Network Management and OM
-## 17. Campus Network
+</details>
 
-
-
-
-
+<details><summary>14. Network Services and Applications</summary></details>
+<details><summary>15. WAN</summary></details>
+<details><summary>16. Network Management and OM</summary></details>
+<details><summary>17. Campus Network</summary></details>
